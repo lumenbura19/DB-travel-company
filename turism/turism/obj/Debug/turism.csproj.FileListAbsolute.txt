@@ -1,0 +1,15 @@
+E:\турфирма\turism\turism\bin\Debug\turism.exe.config
+E:\турфирма\turism\turism\bin\Debug\turism.exe
+E:\турфирма\turism\turism\bin\Debug\turism.pdb
+E:\турфирма\turism\turism\bin\Debug\EntityFramework.dll
+E:\турфирма\turism\turism\bin\Debug\EntityFramework.SqlServer.dll
+E:\турфирма\turism\turism\bin\Debug\EntityFramework.xml
+E:\турфирма\turism\turism\bin\Debug\EntityFramework.SqlServer.xml
+E:\турфирма\turism\turism\bin\Debug\ru\EntityFramework.resources.dll
+E:\турфирма\turism\turism\obj\Debug\turism.csprojResolveAssemblyReference.cache
+E:\турфирма\turism\turism\obj\Debug\turism.Form1.resources
+E:\турфирма\turism\turism\obj\Debug\turism.Properties.Resources.resources
+E:\турфирма\turism\turism\obj\Debug\turism.csproj.GenerateResource.Cache
+E:\турфирма\turism\turism\obj\Debug\turism.csproj.CoreCompileInputs.cache
+E:\турфирма\turism\turism\obj\Debug\turism.exe
+E:\турфирма\turism\turism\obj\Debug\turism.pdb

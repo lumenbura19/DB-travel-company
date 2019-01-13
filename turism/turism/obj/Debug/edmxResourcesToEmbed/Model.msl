@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище turismModelContainer" CdmEntityContainer="turismEntities">
+    <EntitySetMapping Name="Marshrut_ET">
+      <EntityTypeMapping TypeName="turismModel.Marshrut">
+        <MappingFragment StoreEntitySet="Marshrut">
+          <ScalarProperty Name="idMarsh" ColumnName="idMarsh" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="prim" ColumnName="prim" />
+          <ScalarProperty Name="idOtel" ColumnName="idOtel" />
+          <ScalarProperty Name="stoimPerelet" ColumnName="stoimPerelet" />
+          <ScalarProperty Name="stoimTransfer" ColumnName="stoimTransfer" />
+          <ScalarProperty Name="prodolgitSutok" ColumnName="prodolgitSutok" />
+          <ScalarProperty Name="idUslug" ColumnName="idUslug" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otel_ET">
+      <EntityTypeMapping TypeName="turismModel.Otel">
+        <MappingFragment StoreEntitySet="Otel">
+          <ScalarProperty Name="idOtel" ColumnName="idOtel" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="stoimSut" ColumnName="stoimSut" />
+          <ScalarProperty Name="strana" ColumnName="strana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Putevka_ET">
+      <EntityTypeMapping TypeName="turismModel.Putevka">
+        <MappingFragment StoreEntitySet="Putevka">
+          <ScalarProperty Name="idPut" ColumnName="idPut" />
+          <ScalarProperty Name="idMarsh" ColumnName="idMarsh" />
+          <ScalarProperty Name="idTurist" ColumnName="idTurist" />
+          <ScalarProperty Name="sumStoimost" ColumnName="sumStoimost" />
+          <ScalarProperty Name="dateStart" ColumnName="dateStart" />
+          <ScalarProperty Name="dateFinish" ColumnName="dateFinish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Turist_ET">
+      <EntityTypeMapping TypeName="turismModel.Turist">
+        <MappingFragment StoreEntitySet="Turist">
+          <ScalarProperty Name="idTurist" ColumnName="idTurist" />
+          <ScalarProperty Name="pasportNum" ColumnName="pasportNum" />
+          <ScalarProperty Name="pasportSer" ColumnName="pasportSer" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usluga_ET">
+      <EntityTypeMapping TypeName="turismModel.Usluga">
+        <MappingFragment StoreEntitySet="Usluga">
+          <ScalarProperty Name="idUslug" ColumnName="idUslug" />
+          <ScalarProperty Name="nameUslug" ColumnName="nameUslug" />
+          <ScalarProperty Name="opisUslug" ColumnName="opisUslug" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

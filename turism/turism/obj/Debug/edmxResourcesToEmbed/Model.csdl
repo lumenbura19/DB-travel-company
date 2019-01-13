@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="turismModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Marshrut">
+    <Key>
+      <PropertyRef Name="idMarsh" />
+    </Key>
+    <Property Name="idMarsh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="prim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="idOtel" Type="Int32" Nullable="false" />
+    <Property Name="stoimPerelet" Type="Double" />
+    <Property Name="stoimTransfer" Type="Double" />
+    <Property Name="prodolgitSutok" Type="Int32" Nullable="false" />
+    <Property Name="idUslug" Type="Int32" />
+    <NavigationProperty Name="Otel" Relationship="Self.FK_Marshrut_Otel" FromRole="Marshrut" ToRole="Otel" />
+    <NavigationProperty Name="Usluga" Relationship="Self.FK_Marshrut_Usluga" FromRole="Marshrut" ToRole="Usluga" />
+    <NavigationProperty Name="Putevka" Relationship="Self.FK_Putevka_Marshrut" FromRole="Marshrut" ToRole="Putevka" />
+  </EntityType>
+  <EntityType Name="Otel">
+    <Key>
+      <PropertyRef Name="idOtel" />
+    </Key>
+    <Property Name="idOtel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stoimSut" Type="Double" Nullable="false" />
+    <Property Name="strana" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Marshrut" Relationship="Self.FK_Marshrut_Otel" FromRole="Otel" ToRole="Marshrut" />
+  </EntityType>
+  <EntityType Name="Putevka">
+    <Key>
+      <PropertyRef Name="idPut" />
+    </Key>
+    <Property Name="idPut" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idMarsh" Type="Int32" Nullable="false" />
+    <Property Name="idTurist" Type="Int32" Nullable="false" />
+    <Property Name="sumStoimost" Type="Double" />
+    <Property Name="dateStart" Type="DateTime" Precision="0" />
+    <Property Name="dateFinish" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Marshrut" Relationship="Self.FK_Putevka_Marshrut" FromRole="Putevka" ToRole="Marshrut" />
+    <NavigationProperty Name="Turist" Relationship="Self.FK_Putevka_Turist" FromRole="Putevka" ToRole="Turist" />
+  </EntityType>
+  <EntityType Name="Turist">
+    <Key>
+      <PropertyRef Name="idTurist" />
+    </Key>
+    <Property Name="idTurist" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pasportNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pasportSer" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Putevka" Relationship="Self.FK_Putevka_Turist" FromRole="Turist" ToRole="Putevka" />
+  </EntityType>
+  <EntityType Name="Usluga">
+    <Key>
+      <PropertyRef Name="idUslug" />
+    </Key>
+    <Property Name="idUslug" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameUslug" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="opisUslug" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Marshrut" Relationship="Self.FK_Marshrut_Usluga" FromRole="Usluga" ToRole="Marshrut" />
+  </EntityType>
+  <Association Name="FK_Marshrut_Otel">
+    <End Role="Otel" Type="Self.Otel" Multiplicity="1" />
+    <End Role="Marshrut" Type="Self.Marshrut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Otel">
+        <PropertyRef Name="idOtel" />
+      </Principal>
+      <Dependent Role="Marshrut">
+        <PropertyRef Name="idOtel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Marshrut_Usluga">
+    <End Role="Usluga" Type="Self.Usluga" Multiplicity="0..1" />
+    <End Role="Marshrut" Type="Self.Marshrut" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usluga">
+        <PropertyRef Name="idUslug" />
+      </Principal>
+      <Dependent Role="Marshrut">
+        <PropertyRef Name="idUslug" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Putevka_Marshrut">
+    <End Role="Marshrut" Type="Self.Marshrut" Multiplicity="1" />
+    <End Role="Putevka" Type="Self.Putevka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marshrut">
+        <PropertyRef Name="idMarsh" />
+      </Principal>
+      <Dependent Role="Putevka">
+        <PropertyRef Name="idMarsh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Putevka_Turist">
+    <End Role="Turist" Type="Self.Turist" Multiplicity="1" />
+    <End Role="Putevka" Type="Self.Putevka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Turist">
+        <PropertyRef Name="idTurist" />
+      </Principal>
+      <Dependent Role="Putevka">
+        <PropertyRef Name="idTurist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="turismEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Marshrut_ET" EntityType="Self.Marshrut" />
+    <EntitySet Name="Otel_ET" EntityType="Self.Otel" />
+    <EntitySet Name="Putevka_ET" EntityType="Self.Putevka" />
+    <EntitySet Name="Turist_ET" EntityType="Self.Turist" />
+    <EntitySet Name="Usluga_ET" EntityType="Self.Usluga" />
+    <AssociationSet Name="FK_Marshrut_Otel" Association="Self.FK_Marshrut_Otel">
+      <End Role="Otel" EntitySet="Otel_ET" />
+      <End Role="Marshrut" EntitySet="Marshrut_ET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Marshrut_Usluga" Association="Self.FK_Marshrut_Usluga">
+      <End Role="Usluga" EntitySet="Usluga_ET" />
+      <End Role="Marshrut" EntitySet="Marshrut_ET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Putevka_Marshrut" Association="Self.FK_Putevka_Marshrut">
+      <End Role="Marshrut" EntitySet="Marshrut_ET" />
+      <End Role="Putevka" EntitySet="Putevka_ET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Putevka_Turist" Association="Self.FK_Putevka_Turist">
+      <End Role="Turist" EntitySet="Turist_ET" />
+      <End Role="Putevka" EntitySet="Putevka_ET" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
